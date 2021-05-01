@@ -11,9 +11,14 @@
     ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.enable = true; # Off when using Grub !
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.consoleMode = "max";
+  # boot.loader.systemd-boot.consoleMode = "max"; # Off when using Grub !
+  boot.loader.grub.enable = true;
+  boot.loader.grub.devices = [ "nodev" ];
+  boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.useOSProber = true;
 
 networking.hostName = "morbihan"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -69,6 +74,11 @@ users.users.jeremy = {
    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
  };
 
+users.users.guest = {
+   isNormalUser = true;
+ };
+
+
   # Non free
 nixpkgs.config.allowUnfree = true;
 
@@ -87,7 +97,7 @@ environment.systemPackages = with pkgs; [
   neofetch 
   mc
   geany
-  termite
+  terminator
   arc-theme
   papirus-icon-theme
   pkgs.xfce.xfce4-whiskermenu-plugin
