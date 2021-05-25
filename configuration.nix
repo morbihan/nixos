@@ -11,14 +11,14 @@
     ];
 
   # Use the systemd-boot EFI boot loader.
-  # boot.loader.systemd-boot.enable = true; # Off when using Grub !
+  boot.loader.systemd-boot.enable = true; # Off when using Grub !
   boot.loader.efi.canTouchEfiVariables = true;
-  # boot.loader.systemd-boot.consoleMode = "max"; # Off when using Grub !
-  boot.loader.grub.enable = true;
-  boot.loader.grub.devices = [ "nodev" ];
-  boot.loader.grub.efiInstallAsRemovable = true;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.consoleMode = "max"; # Off when using Grub !
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.devices = [ "nodev" ];
+  # boot.loader.grub.efiInstallAsRemovable = true;
+  # boot.loader.grub.efiSupport = true;
+  # boot.loader.grub.useOSProber = true;
 
 networking.hostName = "morbihan"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -52,10 +52,10 @@ services.xserver.displayManager.lightdm.enable = true;
 services.xserver.windowManager.i3.enable = true;
   #services.xserver.desktopManager.plasma5.enable = true;
 services.xserver.desktopManager.xfce.enable = true;
-
+services.xserver.windowManager.icewm.enable = true;
   #Configure keymap in X11
 services.xserver.layout = "us";
-services.xserver.xkbOptions = "eurosign:e";
+services.xserver.xkbOptions = "eurosign:5";
 services.xserver.xkbVariant = "dvorak-intl";
 
   # Enable CUPS to print documents.
