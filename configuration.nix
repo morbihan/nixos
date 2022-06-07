@@ -118,8 +118,13 @@
     arc-theme
     papirus-icon-theme
     pkgs.xfce.xfce4-whiskermenu-plugin
-
+    pkgs.xfce.xfce4-pulseaudio-plugin
   ];
+
+  # Flatpak
+    services.flatpak.enable = true;
+    xdg.portal.enable = true;
+    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
