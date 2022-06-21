@@ -15,9 +15,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.systemd-boot.consoleMode = "max"; # Off when using Grub !
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "eastside"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
- 
+  #swappiness
+  boot.kernel.sysctl = { "vm.swappiness" = 10;};
   # Cloudflare dns.
 
   environment.etc = {
@@ -57,6 +58,7 @@
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.windowManager.i3.enable = true;
+  services.xserver.windowManager.i3.package = pkgs.i3-gaps;
 
   # Configure keymap in X11
   services.xserver = {
@@ -101,8 +103,12 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    atom
+    tdesktop
+    gajim
     wget
     firefox-esr
+    redshift
     vim
     htop
     neofetch
@@ -110,15 +116,19 @@
     glabels
     gimp
     git
+    pkgs.gnome.gnome-disk-utility
     minecraft
     mc
-    jre
+    dmenu
     geany
-    terminator
+    i3status
+    i3lock
+    nitrogen
     arc-theme
     papirus-icon-theme
     pkgs.xfce.xfce4-whiskermenu-plugin
     pkgs.xfce.xfce4-pulseaudio-plugin
+    pavucontrol
   ];
 
   # Flatpak
