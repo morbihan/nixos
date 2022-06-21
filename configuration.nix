@@ -18,7 +18,7 @@
   networking.hostName = "eastside"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   #swappiness
-  boot.kernel.sysctl = { "vm.swappiness" = 10;};
+  boot.kernel.sysctl = { "vm.swappiness" = 60;};
   # Cloudflare dns.
 
   environment.etc = {
@@ -55,7 +55,9 @@
   services.xserver.enable = true;
 
   # Enable the XFCE Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
+  # services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.windowManager.i3.enable = true;
   services.xserver.windowManager.i3.package = pkgs.i3-gaps;
